@@ -276,6 +276,52 @@ button:hover {
   color: rgba(255,255,255,0.7);
   margin: 0;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+    align-items: flex-start;
+  }
+  .container {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  h1 { font-size: 22px; }
+  .subtitle { font-size: 12px; }
+  input {
+    padding: 11px;
+    font-size: 16px;
+  }
+  .matiere-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cb-item {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+  button {
+    padding: 14px;
+    font-size: 15px;
+  }
+  .modal-content, .success-content {
+    width: 95%;
+    padding: 18px 14px;
+  }
+  .modal-actions { flex-direction: column; }
+  .cancel, .confirm {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+  .success-content h2 { font-size: 20px; }
+  .sending-box { padding: 24px 28px; }
+}
 </style>
 </head>
 
@@ -295,7 +341,7 @@ button:hover {
   <input type="text" id="filiere" placeholder="Ex: Sciences, Informatique...">
 
   <label>Mail</label>
-  <input type="email" id="mail" placeholder="exemple@gmail.com">
+  <input type="text" id="mail" placeholder="exemple@gmail.com">
 
   <div class="section-title">📚 Matières</div>
   <div class="matiere-grid">
