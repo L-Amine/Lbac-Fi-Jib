@@ -2,12 +2,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-
-<!-- IMPORTANT MOBILE FIX -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LBac Fi Jib - Inscription</title>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
@@ -16,9 +12,11 @@ body {
   font-family: 'Inter', sans-serif;
   background: radial-gradient(circle at top, #111827, #05060a);
   color: white;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  align-items: flex-start;
+  padding: 40px 20px;
 }
 
 .container {
@@ -62,7 +60,6 @@ input {
   outline: none;
   transition: 0.3s;
   box-sizing: border-box;
-  font-size: 16px;
 }
 
 input:focus {
@@ -116,7 +113,6 @@ button {
   cursor: pointer;
   color: black;
   transition: 0.3s;
-  font-size: 15px;
 }
 
 button:hover {
@@ -124,7 +120,11 @@ button:hover {
   box-shadow: 0 10px 20px rgba(0,229,196,0.2);
 }
 
-/* MODAL */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
 .modal {
   position: fixed;
   inset: 0;
@@ -143,6 +143,18 @@ button:hover {
   background: #0f172a;
   padding: 20px;
   border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,229,196,0.25);
+}
+
+.modal-content h2 {
+  color: #00e5c4;
+  margin-bottom: 15px;
+}
+
+#review {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .modal-actions {
@@ -173,7 +185,6 @@ button:hover {
   margin-top: 0;
 }
 
-/* SUCCESS */
 .success-content {
   width: 90%;
   max-width: 420px;
@@ -182,9 +193,65 @@ button:hover {
   border-radius: 14px;
   box-shadow: 0 0 40px rgba(0,229,196,0.3);
   text-align: center;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-/* LOADING */
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0,229,196,0.15);
+  border: 2px solid rgba(0,229,196,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 32px;
+}
+
+.success-content h2 {
+  color: #00e5c4;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.success-content p {
+  font-size: 14px;
+  opacity: 0.7;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.success-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.success-close {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00e5c4, #00b3ff);
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+
+.success-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,229,196,0.25);
+}
+
 .spinner {
   width: 40px;
   height: 40px;
@@ -192,83 +259,94 @@ button:hover {
   border-top-color: #00e5c4;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
-  margin: auto;
+  margin: 0 auto 15px;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* RESPONSIVE MOBILE FIX */
-@media (max-width: 768px) {
-
-  body {
-    padding: 12px;
-    align-items: flex-start;
-  }
-
-  .container {
-    padding: 16px;
-    border-radius: 14px;
-  }
-
-  h1 {
-    font-size: 20px;
-  }
-
-  .subtitle {
-    font-size: 12px;
-  }
-
-  .matiere-grid {
-    gap: 8px;
-  }
-
-  .cb-item {
-    padding: 10px;
-    font-size: 13px;
-  }
-
-  button {
-    padding: 14px;
-  }
-
-  .modal-actions {
-    flex-direction: column;
-  }
-
-  .cancel, .confirm {
-    width: 100%;
-  }
+.sending-box {
+  background: #0f172a;
+  padding: 30px 40px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0,229,196,0.2);
 }
 
-@media (max-width: 380px) {
-  .matiere-grid {
-    grid-template-columns: 1fr;
+.sending-box p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+    align-items: flex-start;
   }
+  .container {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  h1 { font-size: 22px; }
+  .subtitle { font-size: 12px; }
+  input {
+    padding: 11px;
+    font-size: 16px;
+  }
+  .matiere-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cb-item {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+  button {
+    padding: 14px;
+    font-size: 15px;
+  }
+  .modal-content, .success-content {
+    width: 95%;
+    padding: 18px 14px;
+  }
+  .modal-actions { flex-direction: column; }
+  .cancel, .confirm {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 26px;
+  }
+  .success-content h2 { font-size: 20px; }
+  .sending-box { padding: 24px 28px; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- TON HTML ORIGINAL (inchangé) -->
 <div class="container">
-
   <h1>LBac Fi Jib</h1>
   <div class="subtitle">Inscription intelligente pour ton parcours scolaire</div>
 
   <label>Nom</label>
-  <input type="text" id="nom">
+  <input type="text" id="nom" placeholder="Entrer ton nom">
 
   <label>Prénom</label>
-  <input type="text" id="prenom">
+  <input type="text" id="prenom" placeholder="Entrer ton prénom">
 
   <label>Filière</label>
-  <input type="text" id="filiere">
+  <input type="text" id="filiere" placeholder="Ex: Sciences, Informatique...">
+
+  <label>Mail</label>
+  <input type="text" id="mail" placeholder="exemple@gmail.com">
 
   <div class="section-title">📚 Matières</div>
-
   <div class="matiere-grid">
     <div class="cb-item" onclick="toggle(this)">Français</div>
     <div class="cb-item" onclick="toggle(this)">Anglais</div>
@@ -278,15 +356,13 @@ button:hover {
   </div>
 
   <button onclick="submitForm()">🚀 Envoyer</button>
-
 </div>
 
-<!-- MODAL -->
+<!-- MODAL VÉRIFICATION -->
 <div id="modal" class="modal hidden">
   <div class="modal-content">
-    <h3>🔎 Vérification</h3>
+    <h2>🔎 Vérification des données</h2>
     <div id="review"></div>
-
     <div class="modal-actions">
       <button class="cancel" onclick="closeModal()">Modifier</button>
       <button class="confirm" onclick="confirmSubmit()">Confirmer</button>
@@ -294,41 +370,101 @@ button:hover {
   </div>
 </div>
 
+<!-- OVERLAY ENVOI -->
+<div id="sending" class="modal hidden">
+  <div class="sending-box">
+    <div class="spinner"></div>
+    <p>Envoi en cours...</p>
+  </div>
+</div>
+
+<!-- MODAL SUCCÈS -->
+<div id="success-modal" class="modal hidden">
+  <div class="success-content">
+    <div class="success-icon">✓</div>
+    <h2>Inscription complète !</h2>
+    <div class="success-name" id="success-name"></div>
+    <p>Ton inscription a bien été enregistrée.<br>Bienvenue sur <strong>LBac Fi Jib</strong> ! 🎉</p>
+    <button class="success-close" onclick="closeSuccess()">Retour à l'accueil</button>
+  </div>
+</div>
+
 <script>
-// TON JS RESTE IDENTIQUE (non modifié)
-function toggle(el){
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbzr2mPB5o3yA2-kwVSTFSnVySxB875zzJHCyFmnXKupmsOQeQunFgmecLWEZzYDsJNP/exec";
+
+function toggle(el) {
   el.classList.toggle("checked");
 }
 
-function submitForm(){
+function submitForm() {
   const nom = document.getElementById("nom").value.trim();
   const prenom = document.getElementById("prenom").value.trim();
   const filiere = document.getElementById("filiere").value.trim();
-
+  const mail = document.getElementById("mail").value.trim();
   const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
     .map(e => e.textContent).join(", ");
 
-  if(!nom || !prenom || !filiere || !matieres){
-    alert("Remplis tous les champs !");
+  if (!nom || !prenom || !filiere || !mail || !matieres) {
+    alert("⚠️ Remplis tous les champs !");
     return;
   }
 
   document.getElementById("review").innerHTML = `
-    <p><b>Nom:</b> ${nom}</p>
-    <p><b>Prénom:</b> ${prenom}</p>
-    <p><b>Filière:</b> ${filiere}</p>
-    <p><b>Matières:</b> ${matieres}</p>
+    <p><strong>Nom :</strong> ${nom}</p>
+    <p><strong>Prénom :</strong> ${prenom}</p>
+    <p><strong>Filière :</strong> ${filiere}</p>
+    <p><strong>Mail :</strong> ${mail}</p>
+    <p><strong>Matières :</strong> ${matieres}</p>
   `;
 
   document.getElementById("modal").classList.remove("hidden");
 }
 
-function closeModal(){
+function closeModal() {
   document.getElementById("modal").classList.add("hidden");
 }
 
-function confirmSubmit(){
-  alert("Formulaire envoyé !");
+function confirmSubmit() {
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+  const filiere = document.getElementById("filiere").value.trim();
+  const mail = document.getElementById("mail").value.trim();
+  const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
+    .map(e => e.textContent).join(", ");
+
+  closeModal();
+  document.getElementById("sending").classList.remove("hidden");
+
+  const params = new URLSearchParams();
+  params.append("nom", nom);
+  params.append("prenom", prenom);
+  params.append("filiere", filiere);
+  params.append("mail", mail);
+  params.append("matieres", matieres);
+
+  fetch(SHEET_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: params
+  })
+  .then(() => {
+    document.getElementById("sending").classList.add("hidden");
+    document.getElementById("success-name").textContent = prenom + " " + nom;
+    document.getElementById("success-modal").classList.remove("hidden");
+  })
+  .catch(() => {
+    document.getElementById("sending").classList.add("hidden");
+    alert("❌ Erreur d'envoi. Vérifie ta connexion et réessaie.");
+  });
+}
+
+function closeSuccess() {
+  document.getElementById("success-modal").classList.add("hidden");
+  document.getElementById("nom").value = "";
+  document.getElementById("prenom").value = "";
+  document.getElementById("filiere").value = "";
+  document.getElementById("mail").value = "";
+  document.querySelectorAll(".cb-item.checked").forEach(el => el.classList.remove("checked"));
 }
 </script>
 
