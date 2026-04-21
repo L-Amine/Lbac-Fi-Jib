@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>LBac Fi Jib - Inscription</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, #111827, #05060a);
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 520px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 0 25px rgba(0,229,196,0.15);
+  animation: fadeIn 0.6s ease;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 800;
+  margin-bottom: 5px;
+  color: #00e5c4;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.7;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.3);
+  color: white;
+  outline: none;
+  transition: 0.3s;
+  box-sizing: border-box;
+}
+
+input:focus {
+  border-color: #00e5c4;
+  box-shadow: 0 0 10px rgba(0,229,196,0.2);
+}
+
+.section-title {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.matiere-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.cb-item {
+  padding: 12px;
+  text-align: center;
+  background: rgba(255,255,255,0.06);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.cb-item:hover {
+  transform: scale(1.03);
+  border-color: rgba(0,229,196,0.4);
+}
+
+.cb-item.checked {
+  background: #00e5c4;
+  color: black;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(0,229,196,0.4);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #00e5c4, #00b3ff);
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,229,196,0.2);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-content {
+  width: 90%;
+  max-width: 420px;
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0,229,196,0.25);
+}
+
+.modal-content h2 {
+  color: #00e5c4;
+  margin-bottom: 15px;
+}
+
+#review {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel {
+  flex: 1;
+  background: #ef4444;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.confirm {
+  flex: 1;
+  background: #00e5c4;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* SUCCESS MODAL */
+.success-content {
+  width: 90%;
+  max-width: 420px;
+  background: #0f172a;
+  padding: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(0,229,196,0.3);
+  text-align: center;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.success-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(0,229,196,0.15);
+  border: 2px solid rgba(0,229,196,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 32px;
+}
+
+.success-content h2 {
+  color: #00e5c4;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.success-content p {
+  font-size: 14px;
+  opacity: 0.7;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.success-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.success-close {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00e5c4, #00b3ff);
+  font-weight: 700;
+  cursor: pointer;
+  color: black;
+  transition: 0.3s;
+}
+
+.success-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,229,196,0.25);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>LBac Fi Jib</h1>
+<div class="subtitle">Inscription intelligente pour ton parcours scolaire</div>
+
+<label>Nom</label>
+<input type="text" id="nom" placeholder="Entrer ton nom">
+
+<label>Prénom</label>
+<input type="text" id="prenom" placeholder="Entrer ton prénom">
+
+<label>Filière</label>
+<input type="text" id="filiere" placeholder="Ex: Sciences, Informatique...">
+
+<div class="section-title">📚 Matières</div>
+
+<div class="matiere-grid">
+  <div class="cb-item" onclick="toggle(this)">Français</div>
+  <div class="cb-item" onclick="toggle(this)">Anglais</div>
+  <div class="cb-item" onclick="toggle(this)">Histoire</div>
+  <div class="cb-item" onclick="toggle(this)">Géographie</div>
+  <div class="cb-item" onclick="toggle(this)">Philosophie</div>
+</div>
+
+<button onclick="submitForm()">🚀 Envoyer</button>
+
+</div>
+
+<!-- MODAL VÉRIFICATION -->
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h2>🔎 Vérification des données</h2>
+    <div id="review"></div>
+    <div class="modal-actions">
+      <button class="cancel" onclick="closeModal()">Modifier</button>
+      <button class="confirm" onclick="confirmSubmit()">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL SUCCÈS -->
+<div id="success-modal" class="modal hidden">
+  <div class="success-content">
+    <div class="success-icon">✓</div>
+    <h2>Inscription complète !</h2>
+    <div class="success-name" id="success-name"></div>
+    <p>Ton inscription a bien été enregistrée.<br>Bienvenue sur <strong>LBac Fi Jib</strong> ! 🎉</p>
+    <button class="success-close" onclick="closeSuccess()">Retour à l'accueil</button>
+  </div>
+</div>
+
+<script>
+
+function toggle(el){
+  el.classList.toggle("checked");
+}
+
+function submitForm(){
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+  const filiere = document.getElementById("filiere").value.trim();
+  const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
+    .map(e => e.textContent).join(", ");
+
+  if(!nom || !prenom || !filiere || !matieres){
+    alert("⚠️ Remplis tous les champs !");
+    return;
+  }
+
+  document.getElementById("review").innerHTML = `
+    <p><strong>Nom :</strong> ${nom}</p>
+    <p><strong>Prénom :</strong> ${prenom}</p>
+    <p><strong>Filière :</strong> ${filiere}</p>
+    <p><strong>Matières :</strong> ${matieres}</p>
+  `;
+
+  document.getElementById("modal").classList.remove("hidden");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.add("hidden");
+}
+
+function confirmSubmit(){
+  const nom = document.getElementById("nom").value.trim();
+  const prenom = document.getElementById("prenom").value.trim();
+
+  closeModal();
+
+  document.getElementById("success-name").textContent = prenom + " " + nom;
+  document.getElementById("success-modal").classList.remove("hidden");
+}
+
+function closeSuccess(){
+  document.getElementById("success-modal").classList.add("hidden");
+  document.getElementById("nom").value = "";
+  document.getElementById("prenom").value = "";
+  document.getElementById("filiere").value = "";
+  document.querySelectorAll(".cb-item.checked").forEach(el => el.classList.remove("checked"));
+}
+
+</script>
+
+</body>
+</html>
