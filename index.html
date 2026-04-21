@@ -2,7 +2,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>LBac Fi Jib - Inscription</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LBac Fi Jib</title>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
 
@@ -13,67 +15,52 @@ body {
   color: white;
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 15px;
 }
 
+/* CONTAINER */
 .container {
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
-  padding: 25px;
-  border-radius: 18px;
-  box-shadow: 0 0 25px rgba(0,229,196,0.15);
-  animation: fadeIn 0.6s ease;
+  padding: 18px;
+  border-radius: 14px;
 }
 
+/* TITLE */
 h1 {
   text-align: center;
   font-weight: 800;
-  margin-bottom: 5px;
   color: #00e5c4;
+  font-size: 22px;
 }
 
 .subtitle {
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   opacity: 0.7;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-label {
-  font-size: 13px;
-  opacity: 0.8;
-}
-
+/* INPUT */
 input {
   width: 100%;
   padding: 12px;
-  margin: 8px 0 15px;
+  margin: 8px 0 12px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0,0,0,0.3);
+  border: none;
+  background: rgba(0,0,0,0.4);
   color: white;
-  outline: none;
-  transition: 0.3s;
+  font-size: 16px;
   box-sizing: border-box;
 }
 
-input:focus {
-  border-color: #00e5c4;
-  box-shadow: 0 0 10px rgba(0,229,196,0.2);
-}
-
-.section-title {
-  margin-top: 15px;
-  font-weight: 600;
-}
-
+/* GRID */
 .matiere-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 8px;
 }
 
 .cb-item {
@@ -82,46 +69,32 @@ input:focus {
   background: rgba(255,255,255,0.06);
   border-radius: 10px;
   cursor: pointer;
-  transition: 0.25s;
-  border: 1px solid transparent;
+  font-size: 13px;
+  transition: 0.2s;
   user-select: none;
-}
-
-.cb-item:hover {
-  transform: scale(1.03);
-  border-color: rgba(0,229,196,0.4);
 }
 
 .cb-item.checked {
   background: #00e5c4;
   color: black;
   font-weight: 600;
-  box-shadow: 0 0 15px rgba(0,229,196,0.4);
 }
 
+/* BUTTON */
 button {
   width: 100%;
   padding: 14px;
-  margin-top: 20px;
+  margin-top: 15px;
   border: none;
   border-radius: 12px;
   background: linear-gradient(90deg, #00e5c4, #00b3ff);
   font-weight: 700;
   cursor: pointer;
   color: black;
-  transition: 0.3s;
+  font-size: 15px;
 }
 
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,229,196,0.2);
-}
-
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
@@ -129,124 +102,57 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
 }
 
 .hidden { display: none; }
 
 .modal-content {
-  width: 90%;
-  max-width: 420px;
+  width: 92%;
+  max-width: 400px;
   background: #0f172a;
-  padding: 20px;
+  padding: 16px;
   border-radius: 14px;
-  box-shadow: 0 0 25px rgba(0,229,196,0.25);
-}
-
-.modal-content h2 {
-  color: #00e5c4;
-  margin-bottom: 15px;
-}
-
-#review {
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0.9;
 }
 
 .modal-actions {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 .cancel {
   flex: 1;
   background: #ef4444;
   color: white;
+  border: none;
   padding: 10px;
   border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin-top: 0;
 }
 
 .confirm {
   flex: 1;
   background: #00e5c4;
   color: black;
+  border: none;
   padding: 10px;
   border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  margin-top: 0;
 }
 
-.success-content {
-  width: 90%;
-  max-width: 420px;
-  background: #0f172a;
-  padding: 30px 20px;
-  border-radius: 14px;
-  box-shadow: 0 0 40px rgba(0,229,196,0.3);
+/* LOADING */
+.loading {
   text-align: center;
-  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  padding: 20px;
 }
 
-@keyframes popIn {
-  from { opacity: 0; transform: scale(0.85); }
-  to   { opacity: 1; transform: scale(1); }
+/* SUCCESS */
+.success {
+  text-align: center;
+  padding: 20px;
+  display: none;
 }
 
-.success-icon {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: rgba(0,229,196,0.15);
-  border: 2px solid rgba(0,229,196,0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  font-size: 32px;
-}
-
-.success-content h2 {
+.success h2 {
   color: #00e5c4;
-  font-size: 22px;
-  margin-bottom: 10px;
-}
-
-.success-content p {
-  font-size: 14px;
-  opacity: 0.7;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-.success-name {
-  font-size: 18px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 6px;
-}
-
-.success-close {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #00e5c4, #00b3ff);
-  font-weight: 700;
-  cursor: pointer;
-  color: black;
-  transition: 0.3s;
-}
-
-.success-close:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,229,196,0.25);
 }
 
 .spinner {
@@ -255,111 +161,45 @@ button:hover {
   border: 3px solid rgba(0,229,196,0.2);
   border-top-color: #00e5c4;
   border-radius: 50%;
+  margin: auto;
   animation: spin 0.8s linear infinite;
-  margin: 0 auto 15px;
 }
 
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-.sending-box {
-  background: #0f172a;
-  padding: 30px 40px;
-  border-radius: 14px;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(0,229,196,0.2);
-}
-
-.sending-box p {
-  font-size: 14px;
-  color: rgba(255,255,255,0.7);
-  margin: 0;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 16px;
-    align-items: flex-start;
-  }
-  .container {
-    padding: 20px 16px;
-    border-radius: 14px;
-  }
-  h1 { font-size: 22px; }
-  .subtitle { font-size: 12px; }
-  input {
-    padding: 11px;
-    font-size: 16px;
-  }
-  .matiere-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-  .cb-item {
-    padding: 10px 6px;
-    font-size: 13px;
-  }
-  button {
-    padding: 14px;
-    font-size: 15px;
-  }
-  .modal-content, .success-content {
-    width: 95%;
-    padding: 18px 14px;
-  }
-  .modal-actions { flex-direction: column; }
-  .cancel, .confirm {
-    width: 100%;
-    padding: 12px;
-    font-size: 15px;
-  }
-  .success-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 26px;
-  }
-  .success-content h2 { font-size: 20px; }
-  .sending-box { padding: 24px 28px; }
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <h1>LBac Fi Jib</h1>
-  <div class="subtitle">Inscription intelligente pour ton parcours scolaire</div>
+<div class="container" id="formBox">
 
-  <label>Nom</label>
-  <input type="text" id="nom" placeholder="Entrer ton nom">
+<h1>LBac Fi Jib</h1>
+<div class="subtitle">Inscription intelligente</div>
 
-  <label>Prénom</label>
-  <input type="text" id="prenom" placeholder="Entrer ton prénom">
+<input id="nom" placeholder="Nom">
+<input id="prenom" placeholder="Prénom">
+<input id="filiere" placeholder="Filière">
 
-  <label>Filière</label>
-  <input type="text" id="filiere" placeholder="Ex: Sciences, Informatique...">
-
-  <label>Mail</label>
-  <input type="text" id="mail" placeholder="exemple@gmail.com">
-
-  <div class="section-title">📚 Matières</div>
-  <div class="matiere-grid">
-    <div class="cb-item" onclick="toggle(this)">Français</div>
-    <div class="cb-item" onclick="toggle(this)">Anglais</div>
-    <div class="cb-item" onclick="toggle(this)">Histoire</div>
-    <div class="cb-item" onclick="toggle(this)">Géographie</div>
-    <div class="cb-item" onclick="toggle(this)">Philosophie</div>
-  </div>
-
-  <button onclick="submitForm()">🚀 Envoyer</button>
+<div class="matiere-grid">
+  <div class="cb-item" onclick="toggle(this)">Math</div>
+  <div class="cb-item" onclick="toggle(this)">Physique</div>
+  <div class="cb-item" onclick="toggle(this)">Info</div>
+  <div class="cb-item" onclick="toggle(this)">Anglais</div>
 </div>
 
-<!-- MODAL VÉRIFICATION -->
+<button onclick="submitForm()">🚀 Envoyer</button>
+
+</div>
+
+<!-- MODAL -->
 <div id="modal" class="modal hidden">
   <div class="modal-content">
-    <h2>🔎 Vérification des données</h2>
+    <h3>🔎 Vérification</h3>
     <div id="review"></div>
+
     <div class="modal-actions">
       <button class="cancel" onclick="closeModal()">Modifier</button>
       <button class="confirm" onclick="confirmSubmit()">Confirmer</button>
@@ -367,102 +207,104 @@ button:hover {
   </div>
 </div>
 
-<!-- OVERLAY ENVOI -->
-<div id="sending" class="modal hidden">
-  <div class="sending-box">
+<!-- LOADING -->
+<div id="loading" class="modal hidden">
+  <div class="loading">
     <div class="spinner"></div>
     <p>Envoi en cours...</p>
   </div>
 </div>
 
-<!-- MODAL SUCCÈS -->
-<div id="success-modal" class="modal hidden">
-  <div class="success-content">
-    <div class="success-icon">✓</div>
-    <h2>Inscription complète !</h2>
-    <div class="success-name" id="success-name"></div>
-    <p>Ton inscription a bien été enregistrée.<br>Bienvenue sur <strong>LBac Fi Jib</strong> ! 🎉</p>
-    <button class="success-close" onclick="closeSuccess()">Retour à l'accueil</button>
-  </div>
+<!-- SUCCESS -->
+<div id="success" class="success">
+  <h2>✅ Remplissage fait</h2>
+  <p>Ton formulaire a été envoyé avec succès</p>
+  <button onclick="resetForm()">Nouveau formulaire</button>
 </div>
 
 <script>
+
 const SHEET_URL = "https://script.google.com/macros/s/AKfycbzr2mPB5o3yA2-kwVSTFSnVySxB875zzJHCyFmnXKupmsOQeQunFgmecLWEZzYDsJNP/exec";
 
-function toggle(el) {
+let selected = [];
+
+function toggle(el){
   el.classList.toggle("checked");
+  const val = el.textContent;
+
+  if(selected.includes(val)){
+    selected = selected.filter(v => v !== val);
+  } else {
+    selected.push(val);
+  }
 }
 
-function submitForm() {
+function submitForm(){
+
   const nom = document.getElementById("nom").value.trim();
   const prenom = document.getElementById("prenom").value.trim();
   const filiere = document.getElementById("filiere").value.trim();
-  const mail = document.getElementById("mail").value.trim();
-  const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
-    .map(e => e.textContent).join(", ");
 
-  if (!nom || !prenom || !filiere || !mail || !matieres) {
-    alert("⚠️ Remplis tous les champs !");
+  if(!nom || !prenom || !filiere || selected.length === 0){
+    alert("Remplis tous les champs !");
     return;
   }
 
   document.getElementById("review").innerHTML = `
-    <p><strong>Nom :</strong> ${nom}</p>
-    <p><strong>Prénom :</strong> ${prenom}</p>
-    <p><strong>Filière :</strong> ${filiere}</p>
-    <p><strong>Mail :</strong> ${mail}</p>
-    <p><strong>Matières :</strong> ${matieres}</p>
+    <p><b>Nom:</b> ${nom}</p>
+    <p><b>Prénom:</b> ${prenom}</p>
+    <p><b>Filière:</b> ${filiere}</p>
+    <p><b>Matières:</b> ${selected.join(", ")}</p>
   `;
 
   document.getElementById("modal").classList.remove("hidden");
 }
 
-function closeModal() {
+function closeModal(){
   document.getElementById("modal").classList.add("hidden");
 }
 
-function confirmSubmit() {
+function confirmSubmit(){
+
   const nom = document.getElementById("nom").value.trim();
   const prenom = document.getElementById("prenom").value.trim();
   const filiere = document.getElementById("filiere").value.trim();
-  const mail = document.getElementById("mail").value.trim();
-  const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
-    .map(e => e.textContent).join(", ");
 
-  closeModal();
-  document.getElementById("sending").classList.remove("hidden");
+  document.getElementById("modal").classList.add("hidden");
+  document.getElementById("loading").classList.remove("hidden");
 
-  const params = new URLSearchParams();
-  params.append("nom", nom);
-  params.append("prenom", prenom);
-  params.append("filiere", filiere);
-  params.append("mail", mail);
-  params.append("matieres", matieres);
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = SHEET_URL;
 
-  fetch(SHEET_URL, {
-    method: "POST",
-    mode: "no-cors",
-    body: params
-  })
-  .then(() => {
-    document.getElementById("sending").classList.add("hidden");
-    document.getElementById("success-name").textContent = prenom + " " + nom;
-    document.getElementById("success-modal").classList.remove("hidden");
-  })
-  .catch(() => {
-    document.getElementById("sending").classList.add("hidden");
-    alert("❌ Erreur d'envoi. Vérifie ta connexion et réessaie.");
-  });
+  const data = {
+    nom,
+    prenom,
+    filiere,
+    matieres: selected.join(", ")
+  };
+
+  for(let key in data){
+    const input = document.createElement("input");
+    input.name = key;
+    input.value = data[key];
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+
+  setTimeout(() => {
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("formBox").style.display = "none";
+    document.getElementById("success").style.display = "block";
+  }, 1000);
 }
 
-function closeSuccess() {
-  document.getElementById("success-modal").classList.add("hidden");
-  document.getElementById("nom").value = "";
-  document.getElementById("prenom").value = "";
-  document.getElementById("filiere").value = "";
-  document.getElementById("mail").value = "";
-  document.querySelectorAll(".cb-item.checked").forEach(el => el.classList.remove("checked"));
+function resetForm(){
+  location.reload();
 }
+
 </script>
 
 </body>
