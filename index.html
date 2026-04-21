@@ -447,20 +447,14 @@ function confirmSubmit() {
   params.append("mail", mail);
   params.append("matieres", matieres);
 
-  fetch(SHEET_URL, {
-    method: "POST",
-    mode: "no-cors",
-    body: params
-  })
-  .then(() => {
+  const url = SHEET_URL + "?" + params.toString();
+  const img = new Image();
+  img.onload = img.onerror = function() {
     document.getElementById("sending").classList.add("hidden");
     document.getElementById("success-name").textContent = prenom + " " + nom;
     document.getElementById("success-modal").classList.remove("hidden");
-  })
-  .catch(() => {
-    document.getElementById("sending").classList.add("hidden");
-    alert("❌ Erreur d'envoi. Vérifie ta connexion et réessaie.");
-  });
+  };
+  img.src = url;
 }
 
 function closeSuccess() {
