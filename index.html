@@ -344,7 +344,7 @@ button:hover {
   <input type="text" id="filiere" placeholder="Ex: Sciences, Informatique...">
 
   <label>Mail</label>
-  <input type="text" id="mail" placeholder="exemple@gmail.com">
+  <input type="email" id="mail" placeholder="exemple@gmail.com" inputmode="email" autocomplete="email">
 
   <div class="section-title">📚 Matières</div>
   <div class="matiere-grid">
@@ -390,7 +390,7 @@ button:hover {
 </div>
 
 <script>
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbwfoVHOeiLIsfkR3dpgw1UwB7yLu4LyQ8x_SegzH5PfhzMhES7-V0Q4mBd4wt51yZZm/exec";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbzr2mPB5o3yA2-kwVSTFSnVySxB875zzJHCyFmnXKupmsOQeQunFgmecLWEZzYDsJNP/exec";
 
 function toggle(el) {
   el.classList.toggle("checked");
@@ -404,8 +404,13 @@ function submitForm() {
   const matieres = Array.from(document.querySelectorAll(".cb-item.checked"))
     .map(e => e.textContent).join(", ");
 
-  if (!nom || !prenom || !filiere || !mail || !matieres) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if (!nom || !prenom || !filiere || !matieres) {
     alert("⚠️ Remplis tous les champs !");
+    return;
+  }
+  if (!mail || !emailRegex.test(mail)) {
+    alert("⚠️ Adresse mail invalide !");
     return;
   }
 
